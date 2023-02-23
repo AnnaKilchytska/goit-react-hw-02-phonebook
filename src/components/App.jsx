@@ -33,9 +33,12 @@ class App extends Component {
   };
 
   onFilterContacts = () =>
-    this.state.contacts.filter(contact =>
-      contact.name.toLowerCase().includes(this.state.filter.toLowerCase())
-    );
+    this.state.contacts.filter(contact => {
+      console.log('on filter change', this.state.filter, contact);
+      return contact.name
+        .toLowerCase()
+        .includes(this.state.filter.toLowerCase());
+    });
 
   filteredContacts = this.onFilterContacts();
 
@@ -61,7 +64,7 @@ class App extends Component {
         <ContactForm onSubmit={this.addContact} />
         <Filter onChange={this.changeFilter} value={this.state.filter} />
         <ContactList
-          contacts={this.state.contacts}
+          contacts={this.filteredContacts}
           onDelete={this.onDeleteContact}
         />
       </div>
