@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 
 import React, { Component } from 'react';
+import css from './ContactList.module.css';
 
 class ContactList extends Component {
   static propTypes = {
@@ -16,13 +17,18 @@ class ContactList extends Component {
 
   render() {
     return (
-      <ul>
+      <ul className={css.contactList}>
         {this.props.contacts.map(contact => {
           return (
-            <li key={contact.id} id={contact.id}>
-              <span>{contact.name}</span>
-              <span>{contact.number}</span>
+            <li
+              key={contact.id}
+              id={contact.id}
+              className={css.contactListItem}
+            >
+              <span className={css.contactListName}>{contact.name}</span>
+              <span className={css.contactListNumber}>{contact.number}</span>
               <button
+                className={css.deleteButton}
                 type="button"
                 onClick={() => this.props.onDelete(contact.id)}
               >

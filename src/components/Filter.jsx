@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 
 import React, { Component } from 'react';
+import css from './Filter.module.css';
 
 class Filter extends Component {
   static propTypes = {
@@ -10,11 +11,12 @@ class Filter extends Component {
 
   render() {
     return (
-      <div>
+      <div className={css.filterContainer}>
         <input
           type="text"
           onChange={this.props.onChange}
           value={this.props.value}
+          placeholder="Start typing to find a contact"
         />
       </div>
     );
