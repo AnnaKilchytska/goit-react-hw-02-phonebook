@@ -32,13 +32,14 @@ class App extends Component {
     });
   };
 
-  onFilterContacts = () =>
-    this.state.contacts.filter(contact => {
+  onFilterContacts = () => {
+    return this.state.contacts.filter(contact => {
       console.log('on filter change', this.state.filter, contact);
       return contact.name
         .toLowerCase()
         .includes(this.state.filter.toLowerCase());
     });
+  };
 
   filteredContacts = this.onFilterContacts();
 
