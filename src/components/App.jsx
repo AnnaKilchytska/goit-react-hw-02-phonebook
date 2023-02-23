@@ -41,8 +41,6 @@ class App extends Component {
     });
   };
 
-  filteredContacts = this.onFilterContacts();
-
   changeFilter = e => {
     console.log(e.target.value);
 
@@ -60,13 +58,14 @@ class App extends Component {
   };
 
   render() {
+    const filteredContacts = this.onFilterContacts();
     return (
       <div>
         <h1>Phonebook</h1>
         <ContactForm onSubmit={this.addContact} />
         <Filter onChange={this.changeFilter} value={this.state.filter} />
         <ContactList
-          contacts={this.filteredContacts}
+          contacts={filteredContacts}
           onDelete={this.onDeleteContact}
         />
       </div>
